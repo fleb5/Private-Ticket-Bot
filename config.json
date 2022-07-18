@@ -1,0 +1,24 @@
+{
+    "bot": {
+        "token": "",
+        "clientid": ""
+    },
+
+    "server": {
+        "idguild": ""
+    },
+
+    "categorie": {
+        "ticket": ""
+    },
+    
+    "ruoli": {
+        "staff": ""
+    },
+
+    "stanze": {
+        "transcript": ""
+    }
+
+}
+  
