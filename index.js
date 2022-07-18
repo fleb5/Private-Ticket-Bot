@@ -71,7 +71,7 @@ _/ ____\  |   ____\_ |__  |   ____/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-client.on('message', async message => {
+client.on('messageCreate', async message => {
   if (message.channel.type == 'DM') {
     if(message.author.id == client.config.bot.clientid) return;
     if (!client.guilds.cache.get(client.config.server.idguild).channels.cache.find(c => c.topic == message.author.id)) {
