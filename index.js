@@ -88,11 +88,11 @@ client.on('messageCreate', async message => {
       }).then(channel => {
         const embed = new client.discord.MessageEmbed()
           .setTitle("Nuovo Ticket")
-          .setAuthor(message.author.tag, message.author.displayAvatarURL())
+          .setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() })
           .setDescription("Messaggio: \n```"+ message.content +"```")
           .setColor("BLUE")
           .setTimestamp()
-          .setFooter(`Developed by fleb5®`)
+          .setFooter({ text: `Developed by fleb5®` })
 
         var row = new MessageActionRow().addComponents(
           new MessageButton()
@@ -108,16 +108,16 @@ client.on('messageCreate', async message => {
         .setDescription("**<@"+ message.author.id +"> Grazie per aver aperto un ticket!** \n Uno Staffer sarà presto disponibile per prestarti supporto! \n\nTesto: ```"+ message.content + "``` ")
         .setColor("BLUE")
         .setTimestamp()
-        .setFooter(`Developed by fleb5®`)
+        .setFooter({ text: `Developed by fleb5®` })
       message.author.send({embeds: [embed]}).catch(console.error);
     } else {
       const embed = new client.discord.MessageEmbed()
         .setTitle("Support Bot")
-        .setAuthor(message.author.tag, message.author.displayAvatarURL())
+        .setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() })
         .setDescription("Messaggio: \n```"+ message.content +"```")
         .setColor("BLUE")
         .setTimestamp()
-        .setFooter(`Developed by fleb5®`)
+        .setFooter({ text: `Developed by fleb5®` })
       client.guilds.cache.get(client.config.server.idguild).channels.cache.find(c => c.topic == message.author.id).send({embeds: [embed]});
       message.react("✅");
     }
@@ -127,11 +127,11 @@ client.on('messageCreate', async message => {
     const user = await client.users.fetch(message.channel.topic).catch(console.error);
     const embed = new client.discord.MessageEmbed()
       .setTitle("Support Bot")
-      .setAuthor(message.author.tag, message.author.displayAvatarURL())
+      .setAuthor({ name: message.author.tag, iconURL: message.author.displayAvatarURL() })
       .setDescription("Risposta: \n```"+ message.content +"```")
       .setColor("BLUE")
       .setTimestamp()
-      .setFooter(`Developed by fleb5®`)
+      .setFooter({ text: `Developed by fleb5®` })
     user.send({embeds: [embed]}).catch(console.error);
     message.react("✅");
   }
@@ -148,7 +148,7 @@ client.on('interaction', async interaction => {
       .setDescription(`Ticket Chiuso da <@${interaction.member.id}>`)
       .setColor("BLUE")
       .setTimestamp()
-      .setFooter(`Developed by fleb5®`)
+      .setFooter({ text: `Developed by fleb5®` })
     user.send({embeds: [embed]}).catch(console.error);
 
     const attachment = await client.discordTranscripts.createTranscript(interaction.channel);
@@ -161,7 +161,7 @@ client.on('interaction', async interaction => {
       )
       .setColor("BLUE")
       .setTimestamp()
-      .setFooter(`Developed by fleb5®`)
+      .setFooter({ text: `Developed by fleb5®` })
     interaction.guild.channels.cache.get(client.config.stanze.transcript).send({embeds: [embed2], files: [attachment]});
 
     interaction.channel.send({embeds: [embed]})
@@ -171,4 +171,3 @@ client.on('interaction', async interaction => {
     }, 5000);
   }
 });
-                                    
